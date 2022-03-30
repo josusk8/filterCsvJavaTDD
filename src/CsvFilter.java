@@ -38,6 +38,16 @@ public class CsvFilter {
         return arrayListSplit;
     }
 
+    static ArrayList<String[]> splitNifAndCif(){
+
+        for (int i =1 ; i < arrayListSplit.size()-1 ; i++) {
+            String[] line = arrayListSplit.get(i);
+            if (!"" .equals(line[4]) && !"" .equals(line[5])) {
+                arrayListSplit.remove(i);
+            }
+        }
+        return arrayListSplit;
+    }
 
     static ArrayList<String[]> getArrayList() {
         dividerJumps();
