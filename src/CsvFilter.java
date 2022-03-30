@@ -42,7 +42,7 @@ public class CsvFilter {
 
         for (int i =1 ; i < arrayListSplit.size()-1 ; i++) {
             String[] line = arrayListSplit.get(i);
-            if (!"" .equals(line[4]) && !"" .equals(line[5])) {
+            if (!"" .equals(line[7]) && !"" .equals(line[8])) {
                 arrayListSplit.remove(i);
             }
         }
@@ -53,6 +53,7 @@ public class CsvFilter {
         dividerJumps();
         splitLines();
         splitIgicIva();
+        splitNifAndCif();
 
         return arrayListSplit;
 
