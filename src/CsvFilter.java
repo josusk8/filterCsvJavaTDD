@@ -14,7 +14,7 @@ public class CsvFilter {
                     "2,03/08/2019,2000,2000,,8,MacBook Pro,,78544372A\r\n" +
                     "3,03/12/2019,1000,2000,19,,Lenovo Laptop,,78544372A\r\n" +
                     "4,02/08/2019,5000,2000,8,8,MacBook Pro Plus,CIA99893,78544372A\r\n" +
-                    "5,02/08/2019,5000,2000,,8,MacBook Pro Plus,CIA99893,78544372A";
+                    "5,02/08/2019,5000,2000,,A,MacBook Pro Plus,CIA99893,78544372A";
 
 
     static int dividerJumps() {
