@@ -23,7 +23,7 @@ public class CsvFilterShould {
     @Test
     void exclude_lines_whith_igic_and_iva() {
 
-        assertEquals(1, CsvFilter.splitIgicIva().size());
+        assertEquals(4, CsvFilter.splitIgicIva().size());
 
     }
 
