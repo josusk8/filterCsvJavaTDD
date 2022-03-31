@@ -106,24 +106,30 @@ public class CsvFilter {
     static ArrayList<String[]> splitNonDecimalOnIgicOrIva() {
         splitLines();
 
-        ArrayList<Integer> remove = new ArrayList<>();
+        ArrayList<Integer> removeList = new ArrayList<>();
         Pattern pat = Pattern.compile("\\D");
 
         for (int i = 1; i < arrayListSplit.size(); i++) {
             String[] line = arrayListSplit.get(i);
-            System.out.println("Comparando " + i + "; IGIC:" + line[4] + " IVA: " + line[5]);
+            System.out.println("Comparando Num_Fact " + i + "; IGIC:" + line[4] + " IVA: " + line[5]);
             Matcher mat = pat.matcher(line[4]);
             Matcher mat2 = pat.matcher(line[5]);
 
             if (mat.matches() || mat2.matches()) {
-                remove.add(i);
+                removeList.add(i);
             }
         }
 
-        for (int i = 0; i < remove.size(); i++) {
-            int delete = remove.get(i);
-            System.out.println("Eliminando posición; " + remove.get(i));
+        Collections.sort(removeList, Collections.reverseOrder());
+        int countDelete = removeList.size();
+
+        for (int i = 0; i < countDelete; i++) {
+            int delete = removeList.get(0);
+            removeList.remove(0);
+            String[] line = arrayListSplit.get(delete);
+            System.out.println("Eliminando Num_Fact " + line[0] + ";");
             arrayListSplit.remove(delete);
+
         }
 
         return arrayListSplit;
