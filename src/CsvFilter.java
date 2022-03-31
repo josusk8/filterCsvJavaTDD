@@ -29,6 +29,19 @@ public class CsvFilter {
             String[] split = line.split(",");
             arrayListSplit.add(split);
         }
+
+        //Delete white space
+        Pattern pat = Pattern.compile("\\s");
+        for (String[] line : arrayListSplit) {
+            for (int i = 0; i < line.length; i++) {
+                if (line[i].matches(pat.pattern())) {
+                    line[i] = "";
+                }
+            }
+
+        }
+
+
         return arrayListSplit;
     }
 
@@ -54,7 +67,7 @@ public class CsvFilter {
             int delete = removeList.get(0);
             removeList.remove(0);
             String[] line = arrayListSplit.get(delete);
-            System.out.println("Eliminando Num_Fact " + line[0]+";");
+            System.out.println("Eliminando Num_Fact " + line[0] + ";");
             arrayListSplit.remove(delete);
 
         }
@@ -65,20 +78,26 @@ public class CsvFilter {
     static ArrayList<String[]> splitNifAndCif() {
         splitLines();
 
-        ArrayList<Integer> remove = new ArrayList<>();
+        ArrayList<Integer> removeList = new ArrayList<>();
 
         for (int i = 1; i < arrayListSplit.size(); i++) {
             String[] line = arrayListSplit.get(i);
-            System.out.println("Comparando " + i + "; CIF:" + line[4] + " DNI: " + line[5]);
+            System.out.println("Comparando " + i + "; CIF: " + line[7] + " DNI: " + line[8]);
             if (!"".equals(line[7]) && !"".equals(line[8])) {
-                remove.add(i);
+                removeList.add(i);
             }
         }
 
-        for (int i = 0; i < remove.size(); i++) {
-            int delete = remove.get(i);
-            System.out.println("Eliminando posición; " + remove.get(i));
+        Collections.sort(removeList, Collections.reverseOrder());
+        int countDelete = removeList.size();
+
+        for (int i = 0; i < countDelete; i++) {
+            int delete = removeList.get(0);
+            removeList.remove(0);
+            String[] line = arrayListSplit.get(delete);
+            System.out.println("Eliminando Num_Fact " + line[0] + ";");
             arrayListSplit.remove(delete);
+
         }
 
         return arrayListSplit;
